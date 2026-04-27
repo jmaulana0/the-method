@@ -11,6 +11,7 @@ Sister project: **[the-algorithm](https://github.com/jmaulana0/the-algorithm)** 
 | Skill | What it does |
 |---|---|
 | **[the-council](./the-council/)** | Stress-tests a strategic decision against 10 independent mentor lenses (Musk, Buffett, Munger, Thiel, Graham, Grove, Bezos, Brailsford, Aurelius, Phelps). Surfaces holes; you decide. |
+| **[dotdash-bd](./dotdash-bd/)** | Builds an MBB-style dot-dash storyline for a consulting BD pitch deck. Strict text-only outline — conclusion-first dots, evidence dashes, one page max. You take it into slides yourself. |
 
 ## Install
 
@@ -18,18 +19,18 @@ Sister project: **[the-algorithm](https://github.com/jmaulana0/the-algorithm)** 
 
 ```bash
 git clone https://github.com/jmaulana0/the-method.git
-cp -r the-method/the-council ~/.claude/skills/
+cp -r the-method/the-council the-method/dotdash-bd ~/.claude/skills/
 ```
 
-Claude Code will pick the skill up automatically on next session start. Invoke explicitly with `/the-council` or implicitly by saying things like *"test this with the council"* or *"what would the council say about X"*.
+Claude Code will pick the skills up automatically on next session start. Invoke explicitly with `/the-council` or `/dotdash-bd`, or implicitly by saying things like *"test this with the council"* or *"dot-dash this for [client]"*.
 
 ### claude.ai
 
-Settings → Customize → Skills → **Add skill** → **Upload a skill** → select `the-council/SKILL.md`.
+Settings → Customize → Skills → **Add skill** → **Upload a skill** → select either `the-council/SKILL.md` or `dotdash-bd/SKILL.md` (upload one at a time).
 
 ### Other agents (Cursor, Windsurf, Cline, Codex, etc.)
 
-Copy the body of [`the-council/SKILL.md`](./the-council/SKILL.md) (everything after the YAML frontmatter) into your agent's custom instructions or rules file:
+Copy the body of the relevant `SKILL.md` ([`the-council/SKILL.md`](./the-council/SKILL.md) or [`dotdash-bd/SKILL.md`](./dotdash-bd/SKILL.md)) — everything after the YAML frontmatter — into your agent's custom instructions or rules file:
 
 - **Cursor** → `.cursorrules`
 - **Windsurf** → `.windsurfrules`
@@ -37,11 +38,15 @@ Copy the body of [`the-council/SKILL.md`](./the-council/SKILL.md) (everything af
 - **Codex** → `AGENTS.md`
 - **Anything else** → system prompt
 
-## When to use it
+## When to use which
 
-Use the council for **strategic** decisions that benefit from hostile examination — wedge hypotheses, positioning calls, market reads, major life decisions, framework critiques. Skip it for technical implementation, casual questions, or emotional support.
+| Situation | Skill |
+|---|---|
+| Strategic claim or hypothesis needs hostile examination | **the-council** |
+| Building a BD pitch deck for a prospective consulting client | **dotdash-bd** |
+| Execution decision — goal, gap, primitives on the critical path | [**the-algorithm**](https://github.com/jmaulana0/the-algorithm) (sister repo) |
 
-Pair with **the-algorithm** for execution decisions: the-algorithm asks *"what's the goal, gap, and primitive on the critical path?"*; the-council asks *"is the goal even the right goal?"*
+The skills compose: use **the-algorithm** to nail the execution path, **the-council** to pressure-test whether the goal is even the right goal, **dotdash-bd** to package a winning pitch around the answer.
 
 ## Credit
 
