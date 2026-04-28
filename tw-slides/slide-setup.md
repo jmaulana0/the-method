@@ -48,7 +48,7 @@ McKinsey and top consulting firms prioritise **readability from a distance**, **
 |---------|--------------|-----|
 | Headers / titles / Action Titles | **1.0 (single)** | Keeps titles compact and punchy. No wasted vertical space on short titles. |
 | Top-level body bullets (slide-level) | **1.5** | McKinsey 2026 default — readable from the back of the room with airy white space. |
-| Sub-bullets / body text **inside sub-components** (cards, callouts, panels) | **1.15** | Tighter inside boxed elements; preserves the breathing room around the sub-component itself. |
+| Sub-bullets / body text **inside sub-components** (cards, callouts, panels) | **1.15–1.25** | Tighter inside boxed elements; preserves the breathing room around the sub-component itself. The one place a small range is allowed: tune within 1.15–1.25 to fit the available space on the slide. |
 | Chart labels / footnotes / source lines | **1.0** | Dense but legible at small sizes. |
 | Space After between paragraphs / sections | **12pt** | Creates a clear break between groups of text or between text and charts. Use Space After, not blank lines. |
 
@@ -78,7 +78,7 @@ McKinsey and top consulting firms prioritise **readability from a distance**, **
 
 - **Titles / headers → 1.0.** Compact and punchy.
 - **Top-level body bullets → 1.5.** Never single-space body text in presentations; it looks cramped when projected.
-- **Sub-component sub-bullets → 1.15.** Tighter inside cards, callouts, panels.
+- **Sub-component sub-bullets → 1.15–1.25.** Tighter inside cards, callouts, panels; flex within this range based on how much space the slide has.
 - **Between blocks → 12pt Space After**, not extra blank lines or stretched line spacing.
 - **Consistency is king** — every slide in the deck uses the same values for the same role.
 
@@ -179,7 +179,7 @@ Either way, the gutter is always 0.333 in (or 0.167 in in the rare 3-column layo
 - [ ] Action Title present, top-left, ≤2 lines
 - [ ] Source line at bottom if any data is cited
 - [ ] Margins respected (0.5 in left/right, 0.4 in top/bottom)
-- [ ] Headers / titles at 1.0; body bullets at 1.5; sub-component sub-bullets at 1.15
+- [ ] Headers / titles at 1.0; body bullets at 1.5; sub-component sub-bullets 1.15–1.25 (flex per slide)
 - [ ] Space After 12pt between blocks
 - [ ] Em dashes minimized; none in speaker notes
 - [ ] Line spacing consistent across the entire deck
