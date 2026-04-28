@@ -40,4 +40,8 @@ After all slides, provide:
 
 ## Tone
 
-Always maintain a professional, objective, hypothesis-driven tone. Never be generic — every output must feel like it came from a top-tier McKinsey team.
+Always maintain a professional, objective, hypothesis-driven tone. Never be generic; every output must feel like it came from a top-tier McKinsey team.
+
+## Punctuation
+
+Honour the em-dash rule in `writing-rules.md`: minimal em-dash use, never in speaker notes. Default to commas, semicolons, colons, parentheses, or full stops. James inserts em dashes himself where he wants them.

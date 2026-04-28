@@ -50,7 +50,7 @@ A 10-word elaboration below the Action Title. Adds units, context, or a qualifyi
 - **Confident but not salesy**: no "best-in-class", "world-leading", "game-changer"
 - **Source attribution**: "Source: …" on any slide making a factual claim
 - No LLM-isms: no "ship it", "delve into", "leverage" (unless quoting client language), "revolutionary"
-- Em dash (—) not double hyphen (--)
+- **Em dashes — minimal use, never in speaking notes.** AI overuses the em dash (—). Default to commas, semicolons, colons, parentheses, or a full stop. Use an em dash *only* when no other grammatical pause works. **Never** insert an em dash into speaker notes or presenter scripts — James adds those manually where he wants them. When you do use one, it must be the proper Unicode em dash `—` (U+2014), not a hyphen, double hyphen, or en dash.
 - Months written in full in formal context: "February 2026" not "Feb 2026"
 
 ---

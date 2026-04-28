@@ -20,21 +20,21 @@ In PowerPoint: Design → Slide Size → Widescreen (16:9). In `pptxgenjs`: `pre
 
 ## Font-size scale
 
-A consistent hierarchy is more important than the specific numbers. These defaults follow the McKinsey-style sizing in `persona.md` (24–28pt titles, 16–18pt body) on the 13.333 × 7.5 canvas.
+Specific values, no ranges. Pick from the table — never split the difference.
 
 | Element | Size (pt) | Weight |
 |---------|-----------|--------|
-| Hero / display title (cover only) | 44–52 | Bold |
+| Hero / display title (cover only) | 48 | Bold |
 | Section / divider title | 32 | Bold |
-| Slide main title (Action Title) | 24–28 | Bold |
+| Slide main title (Action Title) | 28 | Bold |
 | Section header / subtitle | 20 | SemiBold |
-| Body / content text | 16–18 | Regular |
+| Body / content text | 16 | Regular |
 | Supporting body / sub-bullets | 14 | Regular |
-| Labels / captions / source lines | 9–10 | Regular or Italic |
+| Labels / captions / source lines | 10 | Regular or Italic |
 
-**Hard floor: 9pt minimum** for any body or label text. Below 9pt is unreadable at projection distance and signals "the slide is too dense — cut content, don't shrink type."
+**Hard floor: 10pt.** No text on any slide goes below 10pt. If content won't fit at 10pt+, cut content — don't shrink type.
 
-In `pptxgenjs`, multiply pt by 100: 24pt → `fontSize: 2400`.
+In `pptxgenjs`, multiply pt by 100: 28pt → `fontSize: 2800`.
 
 ---
 
@@ -42,14 +42,17 @@ In `pptxgenjs`, multiply pt by 100: 24pt → `fontSize: 2400`.
 
 McKinsey and top consulting firms prioritise **readability from a distance**, **white space**, and **clean, consistent formatting**. Line spacing is a key part of that.
 
-### McKinsey / consulting defaults
+### Defaults — specific values, no ranges
 
-| Element | Recommended line spacing | Why |
-|---------|--------------------------|-----|
-| Body text / bullets | **1.5** (or 1.15–1.5) | Best balance of readability and space efficiency. Prevents text from feeling cramped while keeping slides clean. |
-| Titles / headlines | **Single (1.0) or 1.15** | Keeps titles compact and punchy. Avoids wasting vertical space on short titles. |
-| Paragraphs / sections | **Add 6–12pt Space After** | Creates breathing room between groups of text or between text and charts. |
-| Chart labels / small text | **1.0–1.15** | Keeps data dense but still legible. |
+| Element | Line spacing | Why |
+|---------|--------------|-----|
+| Headers / titles / Action Titles | **1.0 (single)** | Keeps titles compact and punchy. No wasted vertical space on short titles. |
+| Top-level body bullets (slide-level) | **1.5** | McKinsey 2026 default — readable from the back of the room with airy white space. |
+| Sub-bullets / body text **inside sub-components** (cards, callouts, panels) | **1.15** | Tighter inside boxed elements; preserves the breathing room around the sub-component itself. |
+| Chart labels / footnotes / source lines | **1.0** | Dense but legible at small sizes. |
+| Space After between paragraphs / sections | **12pt** | Creates a clear break between groups of text or between text and charts. Use Space After, not blank lines. |
+
+**Pick one value per element type and apply it to every slide.** Never mix 1.0 and 1.5 on the same role within a deck — that's the inconsistency McKinsey reviewers flag first.
 
 ### Key principles
 
@@ -57,16 +60,6 @@ McKinsey and top consulting firms prioritise **readability from a distance**, **
 - **Prioritise white space** — McKinsey slides feel "airy" even with a lot of content. White space is the design.
 - **Readable from the back of a conference room** — every choice serves this rule.
 - The 2026 SlideUplift McKinsey guide explicitly recommends **1.5 or 2.0 for body text**.
-
-### General PowerPoint guidelines (broader use cases)
-
-| Use case | Recommended line spacing | Notes |
-|----------|--------------------------|-------|
-| Professional / consulting decks | 1.15–1.5 | Standard for most business presentations |
-| Text-heavy slides | 1.5–2.0 | Improves scannability |
-| Minimal / high-impact slides | 1.0–1.15 | When you have very little text |
-| Accessibility | Minimum 1.2–1.5 | Helps people with visual or cognitive impairments |
-| Projected presentations | 1.3–1.5+ | Larger effective spacing needed because slides are viewed from farther away |
 
 ### How to set line spacing in PowerPoint
 
@@ -83,11 +76,11 @@ McKinsey and top consulting firms prioritise **readability from a distance**, **
 
 ### Quick rules of thumb
 
-- **Larger fonts → slightly more line spacing** (e.g. a 28pt title can use 1.15).
-- **Smaller fonts → can be tighter, but never overlap.**
-- **Never use single spacing on body text** in presentations — it looks cramped when projected.
-- Add breathing room between bullets and sections using **Space Before / After** rather than just increasing line spacing everywhere.
-- Consistency is king — every slide in the deck should feel the same.
+- **Titles / headers → 1.0.** Compact and punchy.
+- **Top-level body bullets → 1.5.** Never single-space body text in presentations; it looks cramped when projected.
+- **Sub-component sub-bullets → 1.15.** Tighter inside cards, callouts, panels.
+- **Between blocks → 12pt Space After**, not extra blank lines or stretched line spacing.
+- **Consistency is king** — every slide in the deck uses the same values for the same role.
 
 ### `pptxgenjs` mapping
 
@@ -105,32 +98,65 @@ For "Space After," use `paraSpaceAfter` (in points × 100): `paraSpaceAfter: 800
 
 - Set the chosen typeface explicitly on every text box; never rely on theme defaults — themes drift across machines and PowerPoint versions.
 - Titles left-aligned on content slides; centred only on cover, divider, and closing slides.
-- Source lines ("Source: …") always at the bottom of the slide, 9–10pt, muted colour.
+- Source lines ("Source: …") always at the bottom of the slide, 10pt, muted colour.
 - No italic for body text; reserve italic for taglines, pull-quotes, or source citations.
 
 (Pick the actual typeface per project. Default to a single sans-serif family with at least Regular / SemiBold / Bold available.)
 
 ---
 
-## Grid constants
+## Column grid
 
-Geometry for a slide that uses a left panel + content area (e.g. left-third-title layouts). Numbers are in inches, scaled to the 13.333 × 7.5 canvas.
+Use one of two column systems on every content slide. Specific widths, no improvising. The grid leaves room to layer diagrams and images alongside text without crowding.
 
-| Constant | Value | Notes |
-|----------|-------|-------|
-| Slide left margin | 0.5 in | Outer safe-area inset |
-| Slide right margin | 0.5 in | Outer safe-area inset |
-| Slide top margin | 0.4 in | |
-| Slide bottom margin | 0.4 in | Above any source line |
-| Left panel width | 4.0 in | ~30% of canvas — for divider / section / left-third layouts |
-| Left panel inner margin | 0.5 in | Text inset from left edge of panel |
-| Left panel text width | 3.0 in | Width of text inside the panel |
-| Gap between panel and content | 0.5 in | |
-| Content area left edge | 4.5 in | Panel width + gap |
-| Content area width | 8.3 in | Main content column |
-| Content area right edge | 12.8 in | |
+### Shared constants
 
-For full-width slides (no left panel): use the full 13.333 × 7.5 canvas with the 0.5 in side margins → usable width 12.333 in.
+| Constant | Value |
+|----------|-------|
+| Slide left margin | 0.5 in |
+| Slide right margin | 0.5 in |
+| Slide top margin | 0.4 in |
+| Slide bottom margin | 0.4 in (above source line) |
+| Column gutter | 0.333 in |
+| Usable content width | 12.333 in |
+
+### Thirds system — column widths: 1/3, 2/3, full
+
+| Layout | Left col | Gutter | Right col |
+|--------|---------:|-------:|----------:|
+| Full | — | — | 12.333 |
+| 1/3 left + 2/3 right | 4.0 | 0.333 | 8.0 |
+| 2/3 left + 1/3 right | 8.0 | 0.333 | 4.0 |
+
+Use the thirds system when one side carries the dominant message (text or visual) and the other side is supporting.
+
+### Quarters system — column widths: 1/4, 1/2, 3/4, full
+
+| Layout | Left col | Gutter | Centre col | Gutter | Right col |
+|--------|---------:|-------:|-----------:|-------:|----------:|
+| Full | — | — | — | — | 12.333 |
+| 1/2 left + 1/2 right | 6.0 | 0.333 | — | — | 6.0 |
+| 1/4 left + 3/4 right | 3.0 | 0.333 | — | — | 9.0 |
+| 3/4 left + 1/4 right | 9.0 | 0.333 | — | — | 3.0 |
+| 1/4 + 1/2 + 1/4 (rare, 3-col) | 3.0 | 0.167 | 6.0 | 0.167 | 3.0 |
+
+Use the quarters system for symmetric layouts (1/2 + 1/2), narrow rails (1/4 + 3/4), or framed centre content (1/4 + 1/2 + 1/4).
+
+### Vertical zones
+
+| Zone | y-position | Height | Notes |
+|------|-----------:|-------:|-------|
+| Action Title band | 0.4 | 0.8 | Top of slide; 28pt bold |
+| Sub-title / lead band | 1.2 | 0.4 | Optional; 20pt SemiBold |
+| Content body | 1.7 | 5.0 | Where columns live |
+| Source line | 6.9 | 0.2 | 10pt at bottom |
+
+### Why two grid systems
+
+- **Thirds (1/3 + 2/3)** — the workhorse for content slides. Asymmetry signals which side is leading.
+- **Quarters (1/4, 1/2, 3/4, full)** — when you need symmetry, narrower rails for sidebars, or a centred showcase for a diagram or image.
+
+Either way, the gutter is always 0.333 in (or 0.167 in in the rare 3-column layout). Pick a system per slide and stay in it.
 
 ---
 
@@ -152,6 +178,8 @@ For full-width slides (no left panel): use the full 13.333 × 7.5 canvas with th
 - [ ] Typeface set explicitly on every text box
 - [ ] Action Title present, top-left, ≤2 lines
 - [ ] Source line at bottom if any data is cited
-- [ ] Margins respected (0.4–0.5 in safe area)
-- [ ] Body line spacing 1.5 (or 1.15–1.5); titles 1.0–1.15
+- [ ] Margins respected (0.5 in left/right, 0.4 in top/bottom)
+- [ ] Headers / titles at 1.0; body bullets at 1.5; sub-component sub-bullets at 1.15
+- [ ] Space After 12pt between blocks
+- [ ] Em dashes minimized; none in speaker notes
 - [ ] Line spacing consistent across the entire deck
