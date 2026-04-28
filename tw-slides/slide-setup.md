@@ -32,7 +32,23 @@ Specific values, no ranges. Pick from the table — never split the difference.
 | Supporting body / sub-bullets | 14 | Regular |
 | Labels / captions / source lines | 10 | Regular or Italic |
 
-**Hard floor: 10pt.** No text on any slide goes below 10pt. If content won't fit at 10pt+, cut content — don't shrink type.
+**Hard floor: 10pt.** No text on any slide goes below 10pt. If content won't fit at 10pt+, cut content; don't shrink type.
+
+### Per-slide font-size limiter
+
+The table above is the *deck-wide* scale, not a menu to draw from on every slide. **Use at most 3 distinct font sizes on a single slide** (4 only if a source / footnote line is also needed). Bouncing between 28 → 14 → 10 → 13 → 11 → 10 → 9 makes the slide look noisy and amateurish; sticking to a small set reads cleanly.
+
+Typical 3-size combinations:
+
+| Slide type | Sizes used |
+|------------|------------|
+| Standard content slide | Action Title 28 / Body 16 / Source 10 |
+| Content slide with subtitle / lead | Action Title 28 / Subtitle 20 / Body 16 (+ Source 10) |
+| Card or panel slide | Action Title 28 / Card title 16 / Sub-bullets 14 (+ Source 10) |
+| Cover slide | Hero 48 / Subtitle 20 |
+| Section divider | Section title 32 / Subtitle 20 |
+
+Pick a combination per slide and use *only* those sizes. If a slide genuinely needs a fifth size, it's a sign the slide is doing too much — split it.
 
 In `pptxgenjs`, multiply pt by 100: 28pt → `fontSize: 2800`.
 
@@ -174,7 +190,8 @@ Either way, the gutter is always 0.333 in (or 0.167 in in the rare 3-column layo
 ## Quick checklist before committing a slide
 
 - [ ] Canvas is 13.333 × 7.5 (16:9 widescreen)
-- [ ] No text below 9pt
+- [ ] No text below 10pt
+- [ ] At most 3 distinct font sizes on the slide (4 only if a source / footnote line is included)
 - [ ] Typeface set explicitly on every text box
 - [ ] Action Title present, top-left, ≤2 lines
 - [ ] Source line at bottom if any data is cited
